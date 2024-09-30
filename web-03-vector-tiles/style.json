@@ -1,0 +1,39 @@
+{
+    "version": 8,
+    "sources": { 
+        "topo": {
+            "type": "raster",
+            "tiles": [
+                "https://cache.kartverket.no/topo/v1/wmts/1.0.0/default/googlemaps/{z}/{y}/{x}.png"
+            ],
+            "tileSize": 256
+        },
+        "hoyde": {
+            "type": "vector",
+            "tiles": [
+                "http://127.0.0.1:3000/web-03-vector-tiles/tiles/{z}/{x}/{y}.pbf"
+            ],
+            "maxzoom": 10
+        }
+    },
+    "layers": [
+        {
+            "id": "topo",
+            "type": "raster",
+            "source": "topo",
+            "paint": {
+            }
+        },
+        {
+            "id": "line",
+            "type": "line",
+            "source": "hoyde",
+            "source-layer": "N50_Høyde_senterlinje",
+            "filter": ["==", "$type", "LineString"],
+            "paint": {
+                "line-color": "rgba(255, 0, 0, 1)",
+                "line-width": 1
+            }
+        }
+    ]
+}

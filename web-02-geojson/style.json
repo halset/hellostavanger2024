@@ -1,0 +1,65 @@
+{
+    "version": 8,
+    "sources": { 
+        "topo": {
+            "type": "raster",
+            "tiles": [
+                "https://cache.kartverket.no/topo/v1/wmts/1.0.0/default/googlemaps/{z}/{y}/{x}.png"
+            ],
+            "tileSize": 256
+        },
+        "data": {
+            "type": "geojson",
+            "data": "http://127.0.0.1:3000/web-02-geojson/data.geojson"
+        }
+    },
+    "layers": [
+        {
+            "id": "topo",
+            "type": "raster",
+            "source": "topo",
+            "paint": {
+            }
+        },
+        {
+            "id": "line",
+            "type": "line",
+            "source": "data",
+            "filter": ["==", "$type", "LineString"],
+            "layout": {
+                
+            },
+            "paint": {
+                "line-color": "rgba(0, 0, 255, 0.5)",
+                "line-width": 10
+            }
+        },
+        {
+            "id": "polygon-fill",
+            "type": "fill",
+            "source": "data",
+            "filter": ["==", "$type", "Polygon"],
+            "layout": {
+                
+            },
+            "paint": {
+                "fill-color": "rgba(255, 0, 0, 0.5)"
+            }
+        },
+        {
+            "id": "points",
+            "type": "circle",
+            "source": "data",
+            "filter": ["==", "$type", "Point"],
+            "layout": {
+                
+            },
+            "paint": {
+                "circle-color": "rgba(255, 0, 0, 0.2)",
+                "circle-radius": 10,
+                "circle-stroke-color": "rgba(255, 0, 0, 1)",
+                "circle-stroke-width": 4
+            }
+        }
+    ]
+}

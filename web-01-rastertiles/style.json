@@ -1,0 +1,21 @@
+{
+    "version": 8,
+    "sources": { 
+        "topo": {
+            "type": "raster",
+            "tiles": [
+                "https://cache.kartverket.no/topo/v1/wmts/1.0.0/default/googlemaps/{z}/{y}/{x}.png"
+            ],
+            "tileSize": 256
+        }
+    },
+    "layers": [
+        {
+            "id": "topo",
+            "type": "raster",
+            "source": "topo",
+            "paint": {
+            }
+        }
+    ]
+}
