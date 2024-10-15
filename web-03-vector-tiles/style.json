@@ -1,6 +1,6 @@
 {
     "version": 8,
-    "sources": { 
+    "sources": {
         "topo": {
             "type": "raster",
             "tiles": [
@@ -13,15 +13,24 @@
             "tiles": [
                 "http://127.0.0.1:3000/web-03-vector-tiles/tiles/{z}/{x}/{y}.pbf"
             ],
+            "minzoom": 5,
             "maxzoom": 10
         }
     },
     "layers": [
         {
+            "id": "background",
+            "type": "background",
+            "paint": {
+                "background-color": "black"
+            }
+        },
+        {
             "id": "topo",
             "type": "raster",
             "source": "topo",
             "paint": {
+                "raster-opacity": 0.2
             }
         },
         {
@@ -29,9 +38,26 @@
             "type": "line",
             "source": "hoyde",
             "source-layer": "N50_Høyde_senterlinje",
-            "filter": ["==", "$type", "LineString"],
+            "filter": [
+                "==",
+                "$type",
+                "LineString"
+            ],
             "paint": {
-                "line-color": "rgba(255, 0, 0, 1)",
+                "line-color": [
+                    "interpolate-hcl",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "get",
+                        "hoyde"
+                    ],
+                    0,
+                    "#f00",
+                    1000,
+                    "#aaa"
+                ],
                 "line-width": 1
             }
         }

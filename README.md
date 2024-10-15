@@ -1,5 +1,10 @@
 # HelloStavanger 2024 - your map in your app
 
+## Things to install
+
+* Web server for examples. `npm i -g serve`.
+* GDAL (with OGR) to convert data. `brew install gdal` on mac. `apt install gdal-bin` on Ubuntu.
+
 ## Web - Maplibre GL JS
 
 Run web examples by running a web server in the root directory and navigate to the web-directories in a browser.
@@ -18,4 +23,4 @@ Examples:
 ## iOS - Maplibre Native
 
 Example:
-* iOS. Example iOS app with Maplibre Native.
+* iOS. Example iOS app with Maplibre Native. Switch out `styleURL` in ContentView.swift to try with different maps. 
