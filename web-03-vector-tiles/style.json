@@ -1,13 +1,6 @@
 {
     "version": 8,
     "sources": {
-        "topo": {
-            "type": "raster",
-            "tiles": [
-                "https://cache.kartverket.no/topo/v1/wmts/1.0.0/default/googlemaps/{z}/{y}/{x}.png"
-            ],
-            "tileSize": 256
-        },
         "hoyde": {
             "type": "vector",
             "tiles": [
@@ -23,14 +16,6 @@
             "type": "background",
             "paint": {
                 "background-color": "black"
-            }
-        },
-        {
-            "id": "topo",
-            "type": "raster",
-            "source": "topo",
-            "paint": {
-                "raster-opacity": 0.2
             }
         },
         {
