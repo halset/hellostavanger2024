@@ -1,0 +1,48 @@
+{
+    "version": 8,
+    "sources": {
+        "hoyde": {
+            "type": "vector",
+            "tiles": [
+                "http://127.0.0.1:3001/table.public.hoyde.shape/{z}/{x}/{y}"
+            ]
+        }
+    },
+    "layers": [
+        {
+            "id": "background",
+            "type": "background",
+            "paint": {
+                "background-color": "black"
+            }
+        },
+        {
+            "id": "line",
+            "type": "line",
+            "source": "hoyde",
+            "source-layer": "table.public.hoyde.shape",
+            "filter": [
+                "==",
+                "$type",
+                "LineString"
+            ],
+            "paint": {
+                "line-color": [
+                    "interpolate-hcl",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "get",
+                        "hoyde"
+                    ],
+                    0,
+                    "#f00",
+                    1000,
+                    "#aaa"
+                ],
+                "line-width": 1
+            }
+        }
+    ]
+}

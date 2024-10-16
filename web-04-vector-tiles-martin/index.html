@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Example with vector tiles</title>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css' />
+    <script src='https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js'></script>
+    <style>
+        body { margin: 0; padding: 0; }
+        html, body, #map { height: 100%; }
+        #features {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 300px;
+        overflow: auto;
+        background: rgba(255, 255, 255, 0.8);
+        display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<pre id='features'></pre>
+<script>
+    const map = new maplibregl.Map({
+        container: 'map', // container id
+        style: 'style.json', //stylesheet location - or it can be inline json object here
+        center: [6.1197, 58.9369], // starting position
+        zoom: 12, // starting zoom
+        hash: true // bookmarkable map position
+    });
+
+    map.addControl(new maplibregl.NavigationControl());
+    
+    map.on('mousemove', function (e) {
+        var features = map.queryRenderedFeatures(e.point);
+        var outputFeatures = [];
+        for (var i = 0; i < features.length; i++) {
+            var feature = features[i];
+            feature.geometry = { 'type': feature.geometry.type };
+            outputFeatures.push(feature);
+        }
+        document.getElementById('features').innerHTML = JSON.stringify(features, null, 2);
+    });
+    
+</script>
+</body>
+</html>
