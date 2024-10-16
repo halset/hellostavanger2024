@@ -28,7 +28,7 @@
             ],
             "paint": {
                 "line-color": [
-                    "interpolate-hcl",
+                    "interpolate",
                     [
                         "linear"
                     ],
